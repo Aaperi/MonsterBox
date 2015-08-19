@@ -9,7 +9,7 @@ public class Movement : MonoBehaviour {
 	bool crouch = false;
 	bool grounded;
 
-	public float speed = 1;
+	public float speed = 0.1f;
 	public float maxSpeed = 10;
 	public float jumpForce = 10;
 	public LayerMask ground = 1;
@@ -66,11 +66,15 @@ public class Movement : MonoBehaviour {
 		if (jump)
 			rb.AddForce (Vector2.up * jumpForce);
 
-		if (right) 
-			rb.velocity += Vector2.right * speed;
+		if (rb.velocity.x <= maxSpeed) {
+			if (right) 
+				rb.velocity += Vector2.right * speed;
+		}
 
-		if (left) 
-			rb.velocity += Vector2.right * -speed;
+		if (rb.velocity.x >= -maxSpeed) {
+			if (left) 
+				rb.velocity += Vector2.right * -speed;
+		}
 
 	}
 }
