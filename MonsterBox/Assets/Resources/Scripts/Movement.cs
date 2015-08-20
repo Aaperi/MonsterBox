@@ -43,16 +43,6 @@ public class Movement : MonoBehaviour {
 			else
 				jump = false;
 		
-
-			if (Input.GetKey (KeyCode.D) || Input.GetKey (KeyCode.RightArrow))
-				right = true;
-			else
-				right = false;
-
-			if (Input.GetKey (KeyCode.A) || Input.GetKey (KeyCode.LeftArrow))
-				left = true;
-			else
-				left = false;
 		} 
 
 		else {
@@ -60,6 +50,16 @@ public class Movement : MonoBehaviour {
 			right = false;
 			left = false;
 		}
+
+		if (Input.GetKey (KeyCode.D) || Input.GetKey (KeyCode.RightArrow))
+			right = true;
+		else
+			right = false;
+		
+		if (Input.GetKey (KeyCode.A) || Input.GetKey (KeyCode.LeftArrow))
+			left = true;
+		else
+			left = false;
 
 		if (Input.GetKey (KeyCode.S) || Input.GetKey (KeyCode.LeftControl) || Input.GetKey (KeyCode.DownArrow))
 			crouch = true;
