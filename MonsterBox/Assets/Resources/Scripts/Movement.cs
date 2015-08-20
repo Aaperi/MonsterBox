@@ -53,6 +53,12 @@ public class Movement : MonoBehaviour {
 				left = true;
 			else
 				left = false;
+		} 
+
+		else {
+			jump = false;
+			right = false;
+			left = false;
 		}
 
 		if (Input.GetKey (KeyCode.S) || Input.GetKey (KeyCode.LeftControl) || Input.GetKey (KeyCode.DownArrow))
@@ -63,8 +69,10 @@ public class Movement : MonoBehaviour {
 
 	void FixedUpdate(){
 
-		if (jump)
-			rb.AddForce (Vector2.up * jumpForce);
+		if (rb.velocity.y <= maxSpeed) {
+			if (jump)
+				rb.velocity += Vector2.up * jumpForce;
+		}
 
 		if (rb.velocity.x <= maxSpeed) {
 			if (right) 
@@ -75,6 +83,11 @@ public class Movement : MonoBehaviour {
 			if (left) 
 				rb.velocity += Vector2.right * -speed;
 		}
+
+		if (crouch)
+			maxSpeed = 5f;
+		else
+			maxSpeed = 10f;
 
 	}
 }
