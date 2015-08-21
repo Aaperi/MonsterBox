@@ -9,7 +9,7 @@ public class Movement : MonoBehaviour {
 	bool crouch = false;
 	bool grounded;
 
-	public float speed = 0.1f;
+	public float speed = 1f;
 	public float maxSpeed = 10;
 	public float jumpForce = 10;
 	public LayerMask ground = 1;
