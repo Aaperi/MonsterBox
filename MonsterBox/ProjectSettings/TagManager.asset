@@ -6,7 +6,7 @@ TagManager:
   tags:
   - Ground
   - Enemy
-  - Test
+  - Trap
   layers:
   - Default
   - TransparentFX

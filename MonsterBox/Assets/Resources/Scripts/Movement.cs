@@ -30,7 +30,13 @@ public class Movement : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
+
+
+
 		Debug.Log (rb.velocity);
+
+
 
 		if(maa.IsTouchingLayers(ground))
 		   grounded = true;
@@ -69,6 +75,7 @@ public class Movement : MonoBehaviour {
 
 	void FixedUpdate(){
 
+
 		if (rb.velocity.y <= maxSpeed) {
 			if (jump)
 				rb.velocity += Vector2.up * jumpForce;
@@ -90,4 +97,5 @@ public class Movement : MonoBehaviour {
 			maxSpeed = 10f;
 
 	}
+	
 }
