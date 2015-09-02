@@ -740,7 +740,91 @@ Transform:
   - {fileID: 764309265}
   m_Father: {fileID: 0}
   m_RootOrder: 6
+<<<<<<< HEAD
 --- !u!1 &1099519445
+=======
+--- !u!1 &1179693265
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1179693267}
+  m_Layer: 0
+  m_Name: Alku
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1179693267
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1179693265}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -15, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1995782640}
+  m_RootOrder: 0
+--- !u!1 &1291808950
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1291808951}
+  - 132: {fileID: 1291808952}
+  m_Layer: 0
+  m_Name: Pistelaskuteksti
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1291808951
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1291808950}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: .5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1995782640}
+  m_RootOrder: 1
+--- !u!132 &1291808952
+GUIText:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1291808950}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Text: 'hei
+
+'
+  m_Anchor: 0
+  m_Alignment: 0
+  m_PixelOffset: {x: 10, y: 450}
+  m_LineSpacing: 1
+  m_TabSize: 4
+  m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+  m_Material: {fileID: 0}
+  m_FontSize: 19
+  m_FontStyle: 0
+  m_Color:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_PixelCorrect: 1
+  m_RichText: 1
+--- !u!1 &1326635998
+>>>>>>> 5348bd3975c2237e5c3fa80263b84be0fe0493a9
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -1298,14 +1382,18 @@ Prefab:
       propertyPath: m_LocalScale.y
       value: 10
       objectReference: {fileID: 0}
+<<<<<<< HEAD
     - target: {fileID: 11436492, guid: ac4da4b4d51ba5e49a17d9e7adcbbf89, type: 2}
       propertyPath: gameOverScreen
       value: 
       objectReference: {fileID: 2025135867}
+=======
+>>>>>>> 5348bd3975c2237e5c3fa80263b84be0fe0493a9
     m_RemovedComponents:
     - {fileID: 11404454, guid: ac4da4b4d51ba5e49a17d9e7adcbbf89, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: ac4da4b4d51ba5e49a17d9e7adcbbf89, type: 2}
   m_IsPrefabParent: 0
+<<<<<<< HEAD
 --- !u!1 &1448473940
 GameObject:
   m_ObjectHideFlags: 0
@@ -1380,6 +1468,8 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 12
+=======
+>>>>>>> 5348bd3975c2237e5c3fa80263b84be0fe0493a9
 --- !u!1 &1457755163 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 112786, guid: ac4da4b4d51ba5e49a17d9e7adcbbf89, type: 2}
@@ -1779,6 +1869,7 @@ Transform:
   - {fileID: 1291808951}
   m_Father: {fileID: 0}
   m_RootOrder: 10
+<<<<<<< HEAD
 --- !u!1 &2025135864
 GameObject:
   m_ObjectHideFlags: 0
@@ -1887,3 +1978,5 @@ MonoBehaviour:
   gameOverMenu: {fileID: 2025135867}
   newGameText: {fileID: 1099519449}
   exitGameText: {fileID: 1855605679}
+=======
+>>>>>>> 5348bd3975c2237e5c3fa80263b84be0fe0493a9
