@@ -4,7 +4,7 @@ using System.Collections;
 public class Trap : MonoBehaviour {
 
 	public Canvas gameOverScreen;
-	public GameObject Player;
+	public GameObject whatToDestroy;
 	
 	void Start () {
 
@@ -16,7 +16,7 @@ public class Trap : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D trap){
 		
 		if (trap.gameObject.tag == "Player") {
-			Destroy(Player);
+			Destroy(whatToDestroy);
 			gameOverScreen.enabled = true;
 
 		}

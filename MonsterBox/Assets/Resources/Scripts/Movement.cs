@@ -9,9 +9,9 @@ public class Movement : MonoBehaviour {
 	bool crouch = false;
 	bool grounded;
 
-	public float speed = 1f;
-	public float maxSpeed = 10;
-	public float jumpForce = 10;
+	public float speed = 0f;
+	public float maxSpeed = 0;
+	public float jumpForce = 3;
 	public LayerMask ground = 1;
 
 	Rigidbody2D rb;
@@ -30,13 +30,7 @@ public class Movement : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
-
-
-
 		Debug.Log (rb.velocity);
-
-
 
 		if(maa.IsTouchingLayers(ground))
 		   grounded = true;
@@ -75,7 +69,6 @@ public class Movement : MonoBehaviour {
 
 	void FixedUpdate(){
 
-
 		if (rb.velocity.y <= maxSpeed) {
 			if (jump)
 				rb.velocity += Vector2.up * jumpForce;
@@ -97,5 +90,4 @@ public class Movement : MonoBehaviour {
 			maxSpeed = 10f;
 
 	}
-	
 }

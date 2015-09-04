@@ -19,7 +19,7 @@ public class GameOverScript : MonoBehaviour {
 	}
 
 	public void NewGamePressed(){
-		Application.LoadLevel (1);
+		Application.LoadLevel (0);
 	}
 
 	public void ExitGamePressed(){
