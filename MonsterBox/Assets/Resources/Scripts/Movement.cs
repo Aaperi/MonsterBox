@@ -4,10 +4,10 @@ using System.Collections;
 public class Movement : MonoBehaviour {
 
 	bool jump = false;
-	bool right = false;
-	bool left = false;
-	bool crouch = false;
-	bool grounded;
+ 	bool right = false;
+ 	bool left = false;
+ 	bool crouch = false;
+ 	bool grounded;
 
 	public float speed = 0f;
 	public float maxSpeed = 0;
@@ -17,69 +17,89 @@ public class Movement : MonoBehaviour {
 	Rigidbody2D rb;
 	CircleCollider2D maa;
 
-
 	void Awake(){
 		rb = GetComponent<Rigidbody2D> ();
 		maa = GetComponentInChildren<CircleCollider2D> ();
 	}
 
 	// Use this for initialization
-	void Start () {
+	void Start () 
+	{
+
+
 
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void Update () 
+	{
 		Debug.Log (rb.velocity);
 
-		if(maa.IsTouchingLayers(ground))
-		   grounded = true;
+		if (maa.IsTouchingLayers (ground))
+			grounded = true;
 		else
-		   grounded = false;
+			grounded = false;
 
-		if (grounded) {
+		if (grounded) 
+		{
 			if (Input.GetKey (KeyCode.W) || Input.GetKey (KeyCode.Space) || Input.GetKey (KeyCode.UpArrow))
 				jump = true;
 			else
 				jump = false;
 		
 		} 
-
-		else {
+		else 
+		{
 			jump = false;
 			right = false;
 			left = false;
 		}
 
-		if (Input.GetKey (KeyCode.D) || Input.GetKey (KeyCode.RightArrow))
+		if (Input.GetKey (KeyCode.D) || Input.GetKey (KeyCode.RightArrow)) 
+		{
 			right = true;
-		else
+		} 
+		else 
+		{
 			right = false;
-		
+		}
+
 		if (Input.GetKey (KeyCode.A) || Input.GetKey (KeyCode.LeftArrow))
+		{
 			left = true;
+		}
 		else
-			left = false;
+		{
+		left = false;
+		}
 
 		if (Input.GetKey (KeyCode.S) || Input.GetKey (KeyCode.LeftControl) || Input.GetKey (KeyCode.DownArrow))
-			crouch = true;
+		{
+		crouch = true;
+		}
 		else
-			crouch = false;
+		{
+		crouch = false;
+		}
 	}
 
-	void FixedUpdate(){
+	void FixedUpdate()
+	{
 
-		if (rb.velocity.y <= maxSpeed) {
+		if (rb.velocity.y <= maxSpeed) 
+		{
 			if (jump)
 				rb.velocity += Vector2.up * jumpForce;
 		}
 
-		if (rb.velocity.x <= maxSpeed) {
+		if (rb.velocity.x <= maxSpeed) 
+		{
 			if (right) 
 				rb.velocity += Vector2.right * speed;
 		}
 
-		if (rb.velocity.x >= -maxSpeed) {
+		if (rb.velocity.x >= -maxSpeed) 
+		{
 			if (left) 
 				rb.velocity += Vector2.right * -speed;
 		}
@@ -88,6 +108,7 @@ public class Movement : MonoBehaviour {
 			maxSpeed = 5f;
 		else
 			maxSpeed = 10f;
+
 
 	}
 }
