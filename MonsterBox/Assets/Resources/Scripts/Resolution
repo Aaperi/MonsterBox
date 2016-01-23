@@ -1,0 +1,19 @@
+using UnityEngine;
+using System.Collections;
+
+public class Resolution : MonoBehaviour {
+
+    public int width;
+    public int height;
+
+	// Use this for initialization
+	void Start () {
+
+        if(!Screen.fullScreen) {
+            Screen.SetResolution(width, height, false);
+
+        } else Screen.SetResolution(width, height, true);
+
+    }
+	
+}
