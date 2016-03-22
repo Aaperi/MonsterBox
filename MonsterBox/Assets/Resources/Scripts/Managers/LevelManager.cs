@@ -2,11 +2,12 @@
 using System.Collections;
 
 public class LevelManager : MonoBehaviour {
+    private GameManager Gamemanager;
     public float LevelTime = 0,
                  Star1LevelTime = 30,  
                  Star2LevelTime = 20, 
                  Star3LevelTime = 10;
-    public bool finnish = false, unlockNextLevel = false;
+    public bool finnish = false;
     public int Stars,
                 PickupCount,
                 PickupCountFor1Star = 0,
@@ -16,6 +17,10 @@ public class LevelManager : MonoBehaviour {
     void Start () {
         LevelTime = 0;
         PlayerPrefs.SetInt("pickupCount", 0);
+        GameObject manager = GameObject.Find("GameManager");
+        Gamemanager = manager.GetComponent<GameManager>();
+        Gamemanager.LevelName = Application.loadedLevelName;
+        Gamemanager.LoadLevelData();
     }
 	
 	// Update is called once per frame
@@ -61,7 +66,26 @@ public class LevelManager : MonoBehaviour {
     {
         Debug.LogError("stars = " + Stars);
         if (Stars >= 1)
-            unlockNextLevel = true;
+        {
+            //unlockNextLevel = true;
+            Gamemanager.UnlockNextLevel = true;
+            int levelpickupsHighScore = Gamemanager.PickupHighscore;
+            if (PickupCount > levelpickupsHighScore)
+            {
+                Gamemanager.PickupHighscore = PickupCount;
+            }
+            int starsOnLevel = Gamemanager.LevelStars;
+            if (Stars > starsOnLevel)
+            {
+                Gamemanager.LevelStars = Stars;
+            }
+            float leveltimeHighscore = Gamemanager.LevelTimeHighScore;
+            if (LevelTime < leveltimeHighscore || leveltimeHighscore == 0)
+            {
+                Gamemanager.LevelTimeHighScore = LevelTime;
+            }
+            Gamemanager.SaveLevelData();
+        }
         
     }
     void OnCollisionEnter2D(Collision2D coll)
