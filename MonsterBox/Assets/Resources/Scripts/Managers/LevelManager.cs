@@ -30,9 +30,9 @@ public class LevelManager : MonoBehaviour {
 	}
     void TimeInLevel()
     {
+
         if (finnish)
         {
-            //Debug.LogError("used time in level: " + LevelTime);
             calculateStars();
         }
         else
@@ -64,7 +64,7 @@ public class LevelManager : MonoBehaviour {
     }
     void levelEnd()
     {
-        Debug.LogError("stars = " + Stars);
+        //Debug.LogError("stars = " + Stars);
         if (Stars >= 1)
         {
             //unlockNextLevel = true;
