@@ -6,11 +6,16 @@ public class BrokeningPlatform : MonoBehaviour
     public float BreakTime = 10f;
     public bool startBreak = false, pickup = false;
     private int pickupCount;
-    
+    private GameManager Gamemanager;
     // Use this for initialization
     void Start()
     {
-
+        GameObject manager = GameObject.Find("GameManager");
+        Gamemanager = manager.GetComponent<GameManager>();
+        if (pickup)
+        {
+            Gamemanager.MaxPickupCount = 1;
+        }
     }
 
     // Update is called once per frame

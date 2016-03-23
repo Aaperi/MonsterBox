@@ -20,7 +20,9 @@ public class LevelManager : MonoBehaviour {
         GameObject manager = GameObject.Find("GameManager");
         Gamemanager = manager.GetComponent<GameManager>();
         Gamemanager.LevelName = Application.loadedLevelName;
-        Gamemanager.LoadLevelData();
+        Gamemanager.LevelEnd = false;
+        if (Gamemanager.ResetData == false)
+            Gamemanager.LoadLevelData();
     }
 	
 	// Update is called once per frame
@@ -34,6 +36,7 @@ public class LevelManager : MonoBehaviour {
         if (finnish)
         {
             calculateStars();
+            Gamemanager.LevelEnd = true;
         }
         else
         {
@@ -44,21 +47,21 @@ public class LevelManager : MonoBehaviour {
     void calculateStars()
     {
         //PickupCount = PlayerPrefs.GetInt("pickupCount");
-        if (LevelTime < Star1LevelTime && LevelTime > Star2LevelTime && PickupCount == PickupCountFor1Star)
+        if (LevelTime < Star1LevelTime && PickupCount >= PickupCountFor1Star)
         {
-            Stars = 1;
-           
-        }
-        else if (LevelTime < Star2LevelTime && PickupCount == PickupCountFor2Star)
-        {
-            Stars = 2;
-        }
-        else if (LevelTime < Star3LevelTime && PickupCount == PickupCountFor3Star)
-        {
-            Stars = 3;
+            if (LevelTime < Star2LevelTime && PickupCount >= PickupCountFor2Star)
+            {
+                if (LevelTime < Star3LevelTime && PickupCount >= PickupCountFor3Star)
+                    Stars = 3;
+                else
+                    Stars = 2;
+            }
+            else
+                Stars = 1;
         }
         else
             Stars = 0;
+
         levelEnd();
         
     }

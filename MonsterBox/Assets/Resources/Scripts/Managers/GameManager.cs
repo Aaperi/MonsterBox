@@ -3,15 +3,21 @@ using System.Collections;
 
 public class GameManager : MonoBehaviour {
     public string currentLevelName;
+    public bool ResetData = false;
     void Awake()
     {
         DontDestroyOnLoad(this);
     }
 
-	// Use this for initialization
-	void Start () {
-	
-	}
+    // Use this for initialization
+    void Start()
+    {
+        if (ResetData)
+        {
+            resetData();
+            ResetData = false;
+        }
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -49,6 +55,18 @@ public class GameManager : MonoBehaviour {
         get { return m_pickupsCount; }
         set { m_pickupsCount = value; }
     }
+    public int m_maxPickupCount;
+    public int MaxPickupCount
+    {
+        get { return m_maxPickupCount; }
+        set { m_maxPickupCount += value; }
+    }
+    public bool m_levelend;
+    public bool LevelEnd
+    {
+        get { return m_levelend; }
+        set { m_levelend = value; }
+    }
     #endregion
 
     #region save and load level data
@@ -70,7 +88,14 @@ public class GameManager : MonoBehaviour {
         if (m_unlockNext)
             PlayerPrefs.SetInt(currentLevelName + " unlocknext", 1);
         else
-            PlayerPrefs.SetInt(currentLevelName + " unlocknext", 1);
+            PlayerPrefs.SetInt(currentLevelName + " unlocknext", 0);
+    }
+    #endregion
+    #region reset data
+    public void resetData()
+    {
+        PlayerPrefs.DeleteAll();
+
     }
     #endregion
 }
