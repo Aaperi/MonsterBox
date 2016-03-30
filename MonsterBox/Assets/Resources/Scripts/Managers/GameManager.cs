@@ -72,6 +72,7 @@ public class GameManager : MonoBehaviour {
     #region save and load level data
     public void LoadLevelData()
     {
+        
         m_stars = PlayerPrefs.GetInt(currentLevelName + " stars");
         m_pickupsCount = PlayerPrefs.GetInt(currentLevelName + " pickups");
         m_levelTime = PlayerPrefs.GetFloat(currentLevelName + " time");
