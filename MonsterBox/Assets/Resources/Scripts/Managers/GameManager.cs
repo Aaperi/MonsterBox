@@ -67,6 +67,18 @@ public class GameManager : MonoBehaviour {
         get { return m_levelend; }
         set { m_levelend = value; }
     }
+    public int m_points;
+    public int EnemyPoints
+    {
+        get { return m_points; }
+        set { m_points = value; }
+    }
+    public bool m_PlayerIslife = true;
+    public bool PlayerIsAlife
+    {
+        get { return m_PlayerIslife; }
+        set { m_PlayerIslife = value; }
+    }
     #endregion
 
     #region save and load level data

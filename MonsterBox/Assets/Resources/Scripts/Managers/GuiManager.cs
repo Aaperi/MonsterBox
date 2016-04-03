@@ -11,7 +11,7 @@ public class GuiManager : MonoBehaviour
     public Text timerText;
     public float staranimationtimer;
     public Text pickupText, pickupTextLevelEnd, levelEndTime;
-    public GameObject levelGui, levelClearedGui, Star1,Star2,Star3, NextLevelButton, pauseMenu;
+    public GameObject levelGui, levelClearedGui, Star1,Star2,Star3, NextLevelButton, pauseMenu, GameOver;
     //public Button RetryButton, ;
     // Use this for initialization
     void Start()
@@ -36,6 +36,7 @@ public class GuiManager : MonoBehaviour
             timerText.text = string.Format("{0:0}:{1:00}", minutes, seconds);
             pickupText.text = PlayerPrefs.GetInt("pickupCount") + "/" + Gamemanager.MaxPickupCount;
         }
+        
         else
         {
             levelClearedGui.active = true;
@@ -43,6 +44,12 @@ public class GuiManager : MonoBehaviour
             //here level cleared screen code
             levelEndTime.text = string.Format("{0:0}:{1:00}", minutes, seconds);
             starAnimation();
+        }
+        if (Gamemanager.PlayerIsAlife == false)
+        {
+            GameOver.active = true;
+            levelGui.active = false;
+            Time.timeScale = 0;
         }
     }
     private void starAnimation()
@@ -93,6 +100,7 @@ public class GuiManager : MonoBehaviour
     public void retryPress()
     {
         Gamemanager.m_maxPickupCount = 0;
+        Gamemanager.PlayerIsAlife = true;
         Application.LoadLevel(Application.loadedLevel);
     }
     public void pause()
