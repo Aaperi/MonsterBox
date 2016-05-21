@@ -19,7 +19,7 @@ public class LevelManager : MonoBehaviour {
         PlayerPrefs.SetInt("pickupCount", 0);
         GameObject manager = GameObject.Find("GameManager");
         Gamemanager = manager.GetComponent<GameManager>();
-        Gamemanager.LevelName = Application.loadedLevelName;
+        Gamemanager.LevelName = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
         Gamemanager.LevelEnd = false;
         if (Gamemanager.ResetData == false)
             Gamemanager.LoadLevelData();

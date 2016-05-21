@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GuiManager : MonoBehaviour
 {
@@ -19,7 +20,7 @@ public class GuiManager : MonoBehaviour
         GameObject manager = GameObject.Find("GameManager");
         Gamemanager = manager.GetComponent<GameManager>();
         Time.timeScale = 1;
-        levelClearedGui.active = false;
+        levelClearedGui.SetActive(false);
         
     }
 
@@ -39,57 +40,61 @@ public class GuiManager : MonoBehaviour
         
         else
         {
-            levelClearedGui.active = true;
-            levelGui.active = false;
+            levelClearedGui.SetActive(true);
+            levelGui.SetActive(false);
             //here level cleared screen code
             levelEndTime.text = string.Format("{0:0}:{1:00}", minutes, seconds);
+            pickupTextLevelEnd.text = PlayerPrefs.GetInt("pickupCount") + "/" + Gamemanager.MaxPickupCount;
             starAnimation();
         }
         if (Gamemanager.PlayerIsAlife == false)
         {
-            GameOver.active = true;
-            levelGui.active = false;
+            GameOver.SetActive(true);
+            levelGui.SetActive(false);
             Time.timeScale = 0;
         }
     }
     private void starAnimation()
     {
-        int levelstars = Gamemanager.LevelStars;
-        if (levelstars > 0)
-            NextLevelButton.active = true;
+        int levelStars = Gamemanager.LevelStars;
+        if (levelStars > 0)
+            NextLevelButton.SetActive(true);
         else
-            NextLevelButton.active = false;
+            NextLevelButton.SetActive(false);
 
-        if (levelstars == 1)
-        {
-            Star1.active = true;
-            
-            Star2.active = false;
-            Star3.active = false;
+        ShowStars(levelStars);
+    }
 
-            pickupTextLevelEnd.text = PlayerPrefs.GetInt("pickupCount") + "/" + Gamemanager.MaxPickupCount;
-        }
-        if (levelstars == 2)
-        {
-            Star1.active = true;
-            staranimationtimer += Time.deltaTime;
-            if(staranimationtimer >= 0.5f)
-                Star2.active = true;
+    private void ShowStars (int starCount) {
+        switch ( starCount ) {
+            case 1:
+                Star1.SetActive(true);
 
-            Star3.active = false;
+                Star2.SetActive(false);
+                Star3.SetActive(false);
+            break;
 
-            pickupTextLevelEnd.text = PlayerPrefs.GetInt("pickupCount") + "/" + Gamemanager.MaxPickupCount;
-        }
-        if (levelstars == 3)
-        {
-            Star1.active = true;
-            staranimationtimer += Time.deltaTime;
-            if (staranimationtimer >= 0.5f)
-                Star2.active = true;
-            if (staranimationtimer >= 1)
-                Star3.active = true;
+            case 2:
+                Star1.SetActive(true);
+                staranimationtimer += Time.deltaTime;
+                if ( staranimationtimer >= 0.5f )
+                    Star2.SetActive(true);
 
-            pickupTextLevelEnd.text = PlayerPrefs.GetInt("pickupCount") + "/" + Gamemanager.MaxPickupCount;
+                Star3.SetActive(false);
+            break;
+
+            case 3:
+                Star1.SetActive(true);
+                staranimationtimer += Time.deltaTime;
+                if ( staranimationtimer >= 0.5f )
+                    Star2.SetActive(true);
+                if ( staranimationtimer >= 1 )
+                    Star3.SetActive(true);
+            break;
+
+            default:
+            Debug.LogError("Something went wrong.");
+            break;
         }
     }
 
@@ -101,13 +106,14 @@ public class GuiManager : MonoBehaviour
     {
         Gamemanager.m_maxPickupCount = 0;
         Gamemanager.PlayerIsAlife = true;
-        Application.LoadLevel(Application.loadedLevel);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        //Application.LoadLevel(Application.loadedLevel);
     }
     public void pause()
     {
         GamePaused = !GamePaused;
-        pauseMenu.active = GamePaused;
-        if(GamePaused)
+        pauseMenu.SetActive(GamePaused);
+        if (GamePaused)
             Time.timeScale = 0;
         else
             Time.timeScale = 1;
